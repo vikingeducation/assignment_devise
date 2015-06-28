@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% if user_signed_in? %>
+  <%= link_to "Sign out", sign_out_path, method: 'DELETE' %>
+<% end %>
+
 <h1>Listing Users</h1>
 
 <table>
@@ -16,9 +20,9 @@
       <tr>
         <td><%= user.username %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_registration_path %></td>
+        <td><%= link_to 'Edit', edit_user_registration_path %></td>
+        <td><%= link_to 'Destroy', user_registration_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_registration_path %>
