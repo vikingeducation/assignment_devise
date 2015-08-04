@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
+  before_action :check_current_user, only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -71,4 +73,12 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :email)
     end
+
+    def check_current_user
+      if current_user != User.find(params[:id])
+        flash[:error] = "Not authorized to change another user"
+        redirect_to URI(request.referer).path
+      end
+    end
+
 end

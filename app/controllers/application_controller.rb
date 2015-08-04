@@ -9,6 +9,13 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username
+    devise_parameter_sanitizer.for(:sign_up) << :first_name 
+    devise_parameter_sanitizer.for(:sign_up) << :last_name 
   end
+
+  # def sign_out
+  # 	sign_out current_user
+  # end
+  # helper_method :sign_out
 
 end

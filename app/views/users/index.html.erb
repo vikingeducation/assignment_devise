@@ -1,11 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
+<% if user_signed_in? %> 
+  <%= link_to "Log Out", sign_out_path, method: :delete %>
+<% end %> 
 
+<h1>Listing Users</h1>
+  
 <table>
   <thead>
     <tr>
       <th>Username</th>
+      <th>First Name</th>
+      <th>Last Name</th>
       <th>Email</th>
       <th colspan="3"></th>
     </tr>
@@ -15,6 +21,8 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.username %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
