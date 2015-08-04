@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   before_action :authorize_user, only: [:show, :edit, :update, :destroy]
 
+  
+
   before_action :authenticate_user!
   # before_filter :authenticate_user!, 
 

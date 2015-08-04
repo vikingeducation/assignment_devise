@@ -28,6 +28,12 @@
       <li><%= link_to "Sign in", new_user_session_path %></li>
     <% end %>
   </ul>
+  <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if flash[:error] %>
+  <p class="alert alert-danger"><%= flash[:error] %></p>
+<% end %>
 
 <%= yield %>
 
