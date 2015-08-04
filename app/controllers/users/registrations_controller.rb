@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 before_filter :configure_sign_up_params, only: [:create]
 before_filter :configure_account_update_params, only: [:update]
+before_action :require_current_user, :only => [:edit, :update]
 
   # GET /resource/sign_up
   # def new
@@ -13,9 +14,13 @@ before_filter :configure_account_update_params, only: [:update]
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+    unless params[:id] == current_user.id.to_s
+      flash[:notice] = "You are not authorized to do this."
+      redirect_to users_path
+    end
+  end
 
   # PUT /resource
   # def update
