@@ -1,0 +1,7 @@
+<%= simple_form_for @user do |f| %>
+
+<%= f.input :username, required: true, hint: "No special characters" %>
+<%= f.input :email, { maxlength: 15 } %>
+<%= f.submit %>
+
+<% end %>
