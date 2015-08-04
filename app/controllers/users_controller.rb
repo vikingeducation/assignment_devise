@@ -20,6 +20,10 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    unless current_user == @user
+      flash[:error]= "You can't see the page. :P"
+      redirect_to root_path
+    end
   end
 
   # POST /users
@@ -67,7 +71,9 @@ class UsersController < ApplicationController
         format.json { head :no_content }
       end
     else
-      redirect_to root_path, :flash => { :error => "Insufficient rights!" }
+      flash[:error] = "Insufficient rights!"
+      redirect_to root_path
+      # redirect_to root_path, :flash => { :error => "Insufficient rights!" }
     end
   end
 
