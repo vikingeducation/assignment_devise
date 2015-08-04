@@ -7,6 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-10.times do |index|
-  User.create(:username=>"user#{index}", email: "user#{index}@some.com")
-end
+# 10.times do |index|
+#   User.create(:username=>"user#{index}", email: "user#{index}@some.com")
+# end
