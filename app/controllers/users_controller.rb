@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user!
+  before_action :is_current_user?, only: [:edit, :update, :destroy]
+  
+
   # GET /users
   # GET /users.json
   def index
@@ -70,5 +74,12 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:username, :email)
+    end
+
+    def is_current_user?
+      unless current_user && params[:id] == current_user.id.to_s
+        flash[:notice] = "You can only edit your info!"
+        redirect_to root_url
+      end
     end
 end
