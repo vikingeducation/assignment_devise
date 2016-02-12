@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
+  validates :first_name, length: { in: 1..50 }
+  validates :last_name, length: { in: 1..50 }
 
 
 end
