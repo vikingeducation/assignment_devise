@@ -3,6 +3,5 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  # validates :username, :email,
-            # length: {in: 1..32}
+  validates :username, :email, :first_name, :last_name, length: {in: 1..32}
 end
