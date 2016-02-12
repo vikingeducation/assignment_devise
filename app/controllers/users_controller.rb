@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
-  before_action :configure_permitted_parameters, if: :devise_controller?
 
   # GET /users
   # GET /users.json
@@ -11,8 +10,8 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
-  def show
-  end
+  # def show
+  # end
 
   # # GET /users/new
   # def new
@@ -63,11 +62,6 @@ class UsersController < ApplicationController
   #   end
   # end
 
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
