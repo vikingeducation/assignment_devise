@@ -9,6 +9,8 @@
   </head>
 
   <body>
+    <p class="error"><%= flash[:error] if flash[:error] %></p>
+    <p class="success"><%= flash[:success] if flash[:success] %></p>
     <%= yield %>
   </body>
 </html>
