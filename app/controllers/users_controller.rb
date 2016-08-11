@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:create, :new]
+  before_action :require_current_user, only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
