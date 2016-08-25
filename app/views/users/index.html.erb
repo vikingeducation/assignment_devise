@@ -2,6 +2,12 @@
 
 <h1>Listing Users</h1>
 
+<% if user_signed_in? %>
+  <%= link_to "Logout", destroy_user_session_path, method: "DELETE" %>
+<% else %>
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -17,7 +23,7 @@
         <td><%= user.username %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Edit', edit_user_registration_path %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -26,4 +32,6 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<% unless user_signed_in? %>
+  <%= link_to 'New User', new_user_registration_path %>
+<% end %>
