@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  before_action :require_current_user, :only => [:edit, :update, :destroy]
+
   # GET /users
   # GET /users.json
   def index
@@ -10,6 +12,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if params[:id] == "sign_out"
+      @users = User.all
+      render :index
+    end
   end
 
   # GET /users/new
@@ -28,6 +34,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        sign_in(:user, @user)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -64,6 +71,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
+      return nil if params[:id] == "sign_out"
       @user = User.find(params[:id])
     end
 

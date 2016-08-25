@@ -9,6 +9,23 @@
   </head>
 
   <body>
+    <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+<% flash.each do |key, value| %>
+                    <h4 class="error-message"><%= content_tag :div, value, class: "flash #{key}" %></h4>
+                  <% end %>
+<% if user_signed_in? %>
+Hi <%= link_to current_user.username, user_path(current_user) %>
+<%= link_to "Logout", logout_path, :method => :delete %>
+<%else %>
+<%=link_to "Sign in", login_path %>
+<%=link_to "Create User", new_user_registration_path %>
+<%end%>
+
     <%= yield %>
   </body>
 </html>
