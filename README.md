@@ -1,6 +1,4 @@
 assignment_devise
 =================
 
-I'll devise me a plan... a genius plan, see!
-
-Alex and Mike
+[Viking Code School](www.vikingcodeschool.com) assignment to practice using the Devise gem for all things account creation, authentication, and authorization. 
