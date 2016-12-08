@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:new, :create]
 
+  before_action :confirm_user, only: [:edit, :destroy, :update]
+
   # GET /users
   # GET /users.json
   def index
@@ -71,6 +73,14 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email)
+      params.require(:user).permit(:username, :email, :first_name, :last_name)
     end
+
+    def confirm_user
+      if current_user != @user
+        flash[:error] = "You are not authorized"
+        redirect_to root_url
+      end
+    end
+
 end
