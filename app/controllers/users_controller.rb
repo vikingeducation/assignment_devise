@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:create, :new]
+  before_action :is_current_user?, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -71,5 +72,12 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:username, :email)
+    end
+
+    def is_current_user?
+      unless params[:id] == current_user.id.to_s
+        flash[:alert] = "Not authorized"
+        redirect_to "/"
+      end
     end
 end
