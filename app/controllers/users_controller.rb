@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :is_correct_user?, only: [:edit, :update, :destroy, :show]
 
   # GET /users
   # GET /users.json
@@ -66,8 +67,15 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def is_correct_user?
+      unless current_user.id == params[:id].to_i
+        flash[:error] = "Not the right user!"
+        redirect_to root_path
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email)
+      params.require(:user).permit(:username, :first_name, :last_name, :email)
     end
 end

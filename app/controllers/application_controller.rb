@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
   protected
 
      def configure_sign_up_params
-       devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+       devise_parameter_sanitizer.permit(:sign_up, keys: [:username,
+                                                          :first_name,
+                                                          :last_name])
      end
 
 end
