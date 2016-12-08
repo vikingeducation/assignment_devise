@@ -1,0 +1,66 @@
+Searching 173 files for "username"
+
+/Users/mac/Desktop/Programming/VCS Immersive Program/12 - Authentication/assignment_devise/app/controllers/users_controller.rb:
+   70      # Never trust parameters from the scary internet, only allow the white list through.
+   71      def user_params
+   72:       params.require(:user).permit(:username, :email)
+   73      end
+   74  end
+
+/Users/mac/Desktop/Programming/VCS Immersive Program/12 - Authentication/assignment_devise/app/views/users/_form.html.erb:
+ 
+
+/Users/mac/Desktop/Programming/VCS Immersive Program/12 - Authentication/assignment_devise/app/views/users/_user.json.jbuilder:
+    1: json.extract! user, :id, :username, :email, :created_at, :updated_at
+    2  json.url user_url(user, format: :json)
+
+/Users/mac/Desktop/Programming/VCS Immersive Program/12 - Authentication/assignment_devise/app/views/users/index.html.erb:
+    6    <thead>
+    7      <tr>
+    8:  
+    9        <th>Email</th>
+   10        <th colspan="3"></th>
+   ..
+   15      <% @users.each do |user| %>
+   16        <tr>
+   17: 
+   18          <td><%= user.email %></td>
+   19          <td><%= link_to 'Show', user %></td>
+
+/Users/mac/Desktop/Programming/VCS Immersive Program/12 - Authentication/assignment_devise/app/views/users/show.html.erb:
+    2  
+    3  <p>
+    4:   <strong>Username:</strong>
+    5:   
+    6  </p>
+    7  
+
+/Users/mac/Desktop/Programming/VCS Immersive Program/12 - Authentication/assignment_devise/config/initializers/devise.rb:
+   29    # ==> Configuration for any authentication mechanism
+   30    # Configure which keys are used when authenticating a user. The default is
+   31:   # just :email. You can configure it to use [:username, :subdomain], so for
+   32    # authenticating a user, both parameters are required. Remember that those
+   33    # parameters are used only when authenticating and not when retrieving from
+
+/Users/mac/Desktop/Programming/VCS Immersive Program/12 - Authentication/assignment_devise/db/schema.rb:
+   17  
+   18    create_table "users", force: :cascade do |t|
+   19:     t.string   "username",                            null: false
+   20      t.datetime "created_at",                          null: false
+   21      t.datetime "updated_at",                          null: false
+
+/Users/mac/Desktop/Programming/VCS Immersive Program/12 - Authentication/assignment_devise/db/migrate/20161208163721_create_users.rb:
+    2    def change
+    3      create_table :users do |t|
+    4:       t.string :username, null: false
+    5        t.string :email,    null: false
+    6  
+
+/Users/mac/Desktop/Programming/VCS Immersive Program/12 - Authentication/assignment_devise/db/migrate/20161208174036_remove_username_from_user.rb:
+    1: class RemoveUsernameFromUser < ActiveRecord::Migration[5.0]
+    2    def change
+    3:     remove_column :users, :username
+    4    end
+    5  end
+
+13 matches across 9 files
