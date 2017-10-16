@@ -12,10 +12,6 @@ class [users]::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  def index
-    @users = User.all
-  end
-
   # GET /resource/edit
   # def edit
   #   super
