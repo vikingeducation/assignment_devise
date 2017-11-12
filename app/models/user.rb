@@ -8,6 +8,7 @@ class User < ApplicationRecord
   # Default devise modules
   # devise :database_authenticable, :registrable, :rememberable
 
-  # validates :username, :presence => true
+  validates :first_name, length: {minimum: 1, maximum: 25}
+  validates :last_name, length: {minimum: 1, maximum: 25}
   validates :email, :presence => true
 end
