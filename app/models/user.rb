@@ -10,7 +10,4 @@ class User < ApplicationRecord
 
   # validates :username, :presence => true
   validates :email, :presence => true
-
-
-  attr_accessor :username, :email, :password, :password_confirmation
 end
