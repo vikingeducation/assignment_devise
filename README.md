@@ -1,24 +1,16 @@
-# README
+Project: Using Devise for Authorization
+============================================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+[Andrea A](https://github.com/andie5/assignment_devise)
 
-* Ruby version
+## To Get Going 
+- run `rake db:migrate`
 
-* System dependencies
+- run `rails s`
+- In the browser run `localhost:3000`
 
-* Configuration
 
-* Database creation
+[A n assignment from the Viking Code School](https://www.vikingcodeschool.com)
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

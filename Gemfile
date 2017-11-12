@@ -51,6 +51,7 @@ group :development do
   gem 'pry'
   gem 'binding_of_caller'
   gem 'devise'
+  gem 'hirb'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

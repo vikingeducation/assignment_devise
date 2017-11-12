@@ -8,7 +8,7 @@ class User < ApplicationRecord
   # Default devise modules
   # devise :database_authenticable, :registrable, :rememberable
 
-  validates :username, :presence => true
+  # validates :username, :presence => true
   validates :email, :presence => true
 
 
