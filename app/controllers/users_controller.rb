@@ -1,18 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # permit non-signed in users to see user show page
-  skip_before_action :authenticate_user!, :only => :show
+  # permit non-signed in users to see user index
+  skip_before_action :authenticate_user!, only: [:index]
 
-  # permit users to edit and destroy their accounts
-  skip_before_action :require_current_user, :only => [:index, :show]
-
-  # # only allow the current user to crud his own records
-  # before_action :require_current_user, :only => [:edit, :update, :destroy]
+  # permit users to edit and destroy their own accounts
+  before_action :require_current_user, :except => [:index, :show]
 
 
   def index
-    @users = User.all
+    @users = User.all.order(:id)
   end
 
   def show
@@ -65,6 +62,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:username, :email, :first_name, :last_name, :password)
+      params.require(:user).permit(:username, :email, :first_name, :last_name)
     end
 end

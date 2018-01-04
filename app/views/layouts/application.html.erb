@@ -30,6 +30,15 @@
         <hr>
       </nav>
 
+      <div class="auth-rules">
+        <p>Auth Rules:</p>
+        <ul>
+          <li>Non-signed in users can: see user index</li>
+          <li>All signed in users can: see show, index</li>
+          <li>Users can only edit, delete their own info</li>
+        </ul>
+      </div>
+
       <% flash.each do |type, message| %>
       <div class="alert alert-<%= bootstrap_flash_class(type) %> fadein">
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden=true>&times;</span><span class="sr-only">Close</span></button>
